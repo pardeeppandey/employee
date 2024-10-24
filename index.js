@@ -15,7 +15,7 @@ mongoose.connect(process.env.MONGODB_URL, {
     useUnifiedTopology: true
 }).then(() => console.log('MongoDB connected')).catch(err => console.log(err));
 
-app.get('/', (req, res) => {
+app.get('/api', (req, res) => {
     res.send('Hello World');
 });
 

@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 require('dotenv').config();
-
+const PORT = process.env.PORT || 5000;
 // Initialize express app
 const app = express();
 app.use(bodyParser.json());
@@ -29,7 +29,7 @@ app.use('/api/employee', employeeRoutes);
 app.use('/api', loginRoutes);
 
 // Start the server
-const PORT = process.env.PORT || 5000;
+
 app.listen(PORT, () => console.log(Server running on port ${PORT}));
 
 // Export the app for Vercel to use

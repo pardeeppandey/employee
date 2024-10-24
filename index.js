@@ -1,7 +1,5 @@
 const express = require('express');
-const adminRoutes = require('./routes/admin');
-const employeeRoutes = require('./routes/employee');
-const loginRoutes = require('./routes/authRoutes');
+
 const app = express();
 const port = 8000;
 
@@ -11,9 +9,7 @@ app.get('/', (req, res) => {
     res.status(200).send('Hello Pardeep' );
 });
 
-app.use('/api/admin', adminRoutes);
-app.use('/api/employee', employeeRoutes);
-app.use('/api', loginRoutes);
+
 
 
 app.listen(port, () => {

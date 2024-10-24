@@ -15,6 +15,10 @@ mongoose.connect(process.env.MONGODB_URL, {
     useUnifiedTopology: true
 }).then(() => console.log('MongoDB connected')).catch(err => console.log(err));
 
+app.get('/', (req, res) => {
+    res.send('Hello World');
+});
+
 // Routes for Admin and Employee API
 const adminRoutes = require('./routes/admin');
 const employeeRoutes = require('./routes/employee');

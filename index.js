@@ -36,5 +36,4 @@ app.use('/api', loginRoutes);
 
 app.listen(PORT, () => console.log(Server running on port ${PORT}));
 
-// Export the app for Vercel to use
-module.exports = app;
+

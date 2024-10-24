@@ -1,15 +1,11 @@
-require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-
+require('dotenv').config();
 
 // Initialize express app
-const app = express(json());
-
-const PORT = process.env.PORT || 5000;
-
+const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
@@ -18,10 +14,6 @@ mongoose.connect(process.env.MONGODB_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then(() => console.log('MongoDB connected')).catch(err => console.log(err));
-
-app.get('/', (req, res) => {
-    res.send('Hello World');
-});
 
 // Routes for Admin and Employee API
 const adminRoutes = require('./routes/admin');
@@ -32,8 +24,10 @@ app.use('/api/admin', adminRoutes);
 app.use('/api/employee', employeeRoutes);
 app.use('/api', loginRoutes);
 
+app.get('/',(req,res)=>{
+    res.status(400).send("Happy World")
+})
+
 // Start the server
-
-app.listen(PORT, () => console.log(Server running on port ${PORT}));
-
-
+const port = process.env.PORT || 5000;
+app.listen(port, () => console.log(`Server running on port ${port}`));
